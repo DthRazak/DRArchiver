@@ -5,6 +5,8 @@ import com.dth.razak.drarchiver.archivers.Zip
 import org.junit.AfterClass
 import org.junit.Test
 import org.junit.Assert.*
+import org.junit.FixMethodOrder
+import org.junit.runners.MethodSorters
 import java.io.File
 
 
@@ -24,6 +26,8 @@ fun deleteRecursively(file: File){
     }
 }
 
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class SevenZTest {
 
     private val sz: SevenZ = SevenZ()
@@ -53,6 +57,8 @@ class SevenZTest {
     }
 }
 
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class ZipTest{
 
     private val zip = Zip()
@@ -69,7 +75,7 @@ class ZipTest{
     fun compressTest(){
         zip.compress(path + "archives/compressed.zip",
             File(path + "files/TwoTxtFiles"), File(path + "files/java_coffee.ico"))
-        val archive = File(path + "archives/java_coffee.zip")
+        val archive = File(path + "archives/compressed.zip")
         assertTrue(archive.exists())
     }
 
